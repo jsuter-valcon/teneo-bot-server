@@ -40,9 +40,7 @@
 <script>
  
 
-
-
- 
+const resize_spec = '* 1.5';
  
 function find_node( path, context )
 {
@@ -53,7 +51,37 @@ function find_node( path, context )
 
 function watch_for_chat ()
 {
-    const sentinel = function(mutants, observer)
+    const sentinel2 = function(mutants, observer)
+    {
+        for( const mutant of mutants )
+        {
+            var found = false;
+            if (mutant.type != 'childList')
+                 continue;
+
+            var added = mutant.addedNodes;
+            for (let i = 0; i < added.length; i++)
+            {
+                if( added[i].id == 'twc-chat-window' )
+                    found = added[i];
+                else
+                    found = find_node( "//*[@id='twc-chat-window']", added[i] );
+
+                if( found )
+                {
+                    var width;
+                    var style = window.getComputedStyle( found );
+                    //width = 'calc( ' + style.width + ' ' + resize_spec + ' )';
+                    width='70%';
+                    found.style['min-height'] = '95%';
+                    found.style.width = width;
+                    break;
+                }
+            }
+        }    
+    };
+
+    const sentinel1 = function(mutants, observer)
     {
         for( const mutant of mutants )
         {
@@ -84,9 +112,12 @@ function watch_for_chat ()
  
     if( target )
     {
-         const O = new MutationObserver( sentinel );
-         if( O )
-             O.observe( target, config);
+         const open = new MutationObserver( sentinel1 );
+         const wide = new MutationObserver( sentinel2 )
+         if( open )
+             open.observe( target, config );
+         if( wide )
+             wide.observe( target, config );
     }
 }
   </script>
