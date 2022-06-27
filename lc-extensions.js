@@ -287,7 +287,7 @@ const resetCurrentLiveChatData = () => {
 const assignAvailability = payload => {
     switch (payload.availability) {
         case 'online':
-            displaySystemMessage('Live chat is available');
+            //displaySystemMessage('Live chat is available');
             break;
         case 'offline':
             displaySystemMessage('Live chat is offline');
@@ -328,7 +328,7 @@ const prepareForLiveChat = chat => {
         events = chat.thread.events;
     }
     resetLastQueuePosition();
-    displaySystemMessage('Live chat has started');
+    //displaySystemMessage('Live chat has started');
     let nNamedAgents = 0, nUnnamedAgents = 0;
     if (chat.users) {
         chat.users.forEach(user => {
@@ -358,7 +358,7 @@ customerSDK.on('connected', payload => {
     obtainLiveChat(storage.getItem('twc_liveChatInc_chatId')).then(chat => {
         if (liveChatStopper !== LC_STOPPER_NONE) return;
         setCurrentLiveChatData(chat);
-        displaySystemMessage('Live chat has connected');
+        //displaySystemMessage('Live chat has connected');
         logger.log('Live chat has connected', chat);
         prepareForLiveChat(chat);
     }, () => {
