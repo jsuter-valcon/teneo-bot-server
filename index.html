@@ -159,7 +159,7 @@ function watch_for_chat ()
   --callout-fg-color: #eff0f2 !important;  
   --sendicon-fg-color: #003265 !important;
   --form-input-background-color: #fdd42f !important;
-  --quickreply-expired-color: #eff0f2 !important; 
+  --quickreply-expired-color: #dddddd !important; 
 	 
 } 
 	  
@@ -170,6 +170,9 @@ function watch_for_chat ()
   color: var(--user-message-fg-color, #565867);
 }	
 	  	  
+.twc-quickreply-message.twc-expired .twc-quickreply-message__item:not(.twc-selected) { 
+  --user-message-bg-color: #eff0f2 !important;
+}
 	  
 .twc-header__title {
   font-weight: bold !important;
