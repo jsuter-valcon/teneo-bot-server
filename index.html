@@ -170,14 +170,14 @@ function watch_for_chat ()
   color: var(--user-message-fg-color, #565867);
 }	
 	  	  
-.twc-quickreply-message.twc-expired .twc-quickreply-message__item:{ 
-  --quickreply-expired-color: #a3818a !important;
+.twc-quickreply-message.twc-expired .twc-quickreply-message__item.twc-selected:{ 
+  color: var(--expired-color, #565867);	
   background: var(--user-message-bg-color, #565867);
 }
 	  
 .twc-quickreply-message.twc-expired .twc-quickreply-message__item:not(.twc-selected) { 
-  --quickreply-expired-color: #eff0f2 !important;	
-  --user-message-bg-color: #eff0f2 !important;
+  --quickreply-expired-color: #c9c9c9 !important;	
+  --user-message-bg-color: #c9c9c9 !important;
 }
 	  
 .twc-header__title {
