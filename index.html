@@ -39,12 +39,14 @@
   function onEngineResponse(payload) {
 	// handle engine response event
     var response = payload.responseDetails;
-    console.log("voice", response.output.parameters.msVoice); 
+
     if(response.output.parameters.msVoice && response.output.parameters.msVoice!="") {
     	TeneoWebChat.call('set_ms_voice', response.output.parameters.msVoice );
     	TeneoWebChat.call('set_locale',response.output.parameters.locale );
+        console.log("voice", response.output.parameters.msVoice); 	    
+        console.log("locale", response.output.parameters.locale);
     }
-    console.log("locale", response.output.parameters.locale);
+    
 }
 
 TeneoWebChat.on('engine_response', onEngineResponse);
