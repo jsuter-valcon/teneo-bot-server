@@ -70,8 +70,8 @@ const disableUserInput = () => {
 
 
 const customerSDK = CustomerSDK.init({
-    clientId: '9fd023c2ee3786d03f6f243034c1a343',
-    licenseId: 9243615,
+    clientId: 'b2f930abad640cf3d1505787ed6fdca4',
+    licenseId: 14253738,
     autoConnect: false
 });
 
