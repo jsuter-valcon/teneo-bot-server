@@ -1,4 +1,5 @@
 // (() => {
+let transcript = '';
 
 if (!Promise.prototype.finally) throw new Error('This extension is not compatible with your browser');
 
@@ -69,8 +70,8 @@ const disableUserInput = () => {
 
 
 const customerSDK = CustomerSDK.init({
-    clientId: 'b2f930abad640cf3d1505787ed6fdca4',
-    licenseId: 14253738,
+    clientId: '9fd023c2ee3786d03f6f243034c1a343',
+    licenseId: 9243615,
     autoConnect: false
 });
 
@@ -287,7 +288,7 @@ const resetCurrentLiveChatData = () => {
 const assignAvailability = payload => {
     switch (payload.availability) {
         case 'online':
-            //displaySystemMessage('Live chat is available');
+            displaySystemMessage('Live chat is available');
             break;
         case 'offline':
             displaySystemMessage('Live chat is offline');
@@ -328,7 +329,7 @@ const prepareForLiveChat = chat => {
         events = chat.thread.events;
     }
     resetLastQueuePosition();
-    //displaySystemMessage('Live chat has started');
+    displaySystemMessage('Live chat has started');
     let nNamedAgents = 0, nUnnamedAgents = 0;
     if (chat.users) {
         chat.users.forEach(user => {
@@ -358,9 +359,10 @@ customerSDK.on('connected', payload => {
     obtainLiveChat(storage.getItem('twc_liveChatInc_chatId')).then(chat => {
         if (liveChatStopper !== LC_STOPPER_NONE) return;
         setCurrentLiveChatData(chat);
-        //displaySystemMessage('Live chat has connected');
+        displaySystemMessage('Live chat has connected');
         logger.log('Live chat has connected', chat);
         prepareForLiveChat(chat);
+        customerSDK.sendEvent({ chatId: sLiveChatId, event: { type: 'message', text: transcript } }).then(payload => logger.debug("customerSDK.sendEvent::then", payload), error => logger.error("customerSDK.sendEvent::catch", error));
     }, () => {
         if (liveChatStopper !== LC_STOPPER_NONE) return;
         resetCurrentLiveChatData();
@@ -486,6 +488,8 @@ TeneoWebChat.on('engine_response', data => {
     }
     liveChatStopper = LC_STOPPER_NONE;
     let s = data.responseDetails.output.parameters.livechat_handover;
+    transcript = data.responseDetails.output.parameters.dialogueTranscript;
+
     if (s && s.trim().toLowerCase() === 'true') {
         resetCurrentLiveChatData();
         disableUserInput();
