@@ -202,14 +202,22 @@ function watch_for_chat ()
 .twc-card {
   background-color: #ffffff !important;
   border: 0px !important;
+  border-top: 0px !important;
 }
 
 .twc-card .twc-btn  {
+	
+  background: var(--user-message-bg-color, #565867);
+  color: var(--user-message-fg-color, #565867);
+  font-size: 18px !important;	
+  border-top: 0px !important;	
+}
+	  
+.twc-linkbutton {
   background: var(--user-message-bg-color, #565867);
   color: var(--user-message-fg-color, #565867);
   font-size: 18px !important;	
 }
-	  
 	  
 .twc-quickreply-message__item {
   --user-message-fg-color: #003265 !important;  
