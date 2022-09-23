@@ -205,12 +205,18 @@ function watch_for_chat ()
   border-top: 0px !important;
 }
 
+.twc-card .twc-buttons, .twc-card .twc-linkbuttons {
+  background-color: #ffffff !important;
+  border: 0px !important;
+  border-top: 0px !important;
+}
+
 .twc-card .twc-btn  {
 	
   background: var(--user-message-bg-color, #565867);
   color: var(--user-message-fg-color, #565867);
   font-size: 18px !important;	
-  border-top: 0px !important;	
+ 
 }
 	  
 .twc-linkbutton {
@@ -225,9 +231,15 @@ function watch_for_chat ()
   background: var(--user-message-bg-color, #565867);
   color: var(--user-message-fg-color, #565867);
   font-size: 18px !important;	
-}	
+}
 	  
 .twc-quickreply-message.twc-expired .twc-quickreply-message__item.twc-selected { 
+  --quickreply-bg-color: #a9a9a9 !important;    
+ --quickreply-expired-color: #a9a9a9 !important; 
+  background: var(--user-message-bg-color, #565867);
+  font-size: 18px !important;	
+}	  
+.twc-card .twc-btn.twc-expired	 .twc-btn__item.twc-selected {  
   --quickreply-bg-color: #a9a9a9 !important;    
  --quickreply-expired-color: #a9a9a9 !important; 
   background: var(--user-message-bg-color, #565867);
