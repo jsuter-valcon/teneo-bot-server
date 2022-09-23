@@ -219,6 +219,14 @@ function watch_for_chat ()
  
 }
 	  
+.twc-card .twc-btn:hover  {
+	
+  color: var(--user-message-bg-color, #565867);
+  background: var(--user-message-fg-color, #565867);
+  font-size: 18px !important;	
+ 
+}	 
+	  
 .twc-linkbutton {
   background: var(--user-message-bg-color, #565867);
   color: var(--user-message-fg-color, #565867);
@@ -243,6 +251,11 @@ function watch_for_chat ()
   --quickreply-bg-color: #a9a9a9 !important;    
  --quickreply-expired-color: #a9a9a9 !important; 
   background: var(--user-message-bg-color, #565867);
+  font-size: 18px !important;	
+}
+.twc-card .twc-btn.twc-expired	 .twc-btn____item:not(.twc-selected) {  
+  --quickreply-expired-color: #c9c9c9 !important;
+  --user-message-bg-color: #eff0f2 !important;
   font-size: 18px !important;	
 }
 	  
