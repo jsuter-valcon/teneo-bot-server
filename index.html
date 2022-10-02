@@ -70,7 +70,7 @@ TeneoWebChat.on('engine_response', onEngineResponse);
 <script>
  
 
-const resize_spec = '* 1.5';
+const resize_spec = '* 1.75';
  
 function find_node( path, context )
 {
@@ -102,8 +102,8 @@ function watch_for_chat ()
                     var width;
                     var style = window.getComputedStyle( found );
                     //width = 'calc( ' + style.width + ' ' + resize_spec + ' )';
-                    width='30%';
-                    found.style['min-height'] = '95%';
+                    width='40%';
+                    found.style['min-height'] = '90%';
                     found.style.width = width;
                     break;
                 }
