@@ -8,7 +8,7 @@
 
  /*! For license information please see teneo-web-chat.js.LICENSE.txt */
  var teneoProps;
- var autoopen=false;
+
 function f1() {
     alert("f1 called");
     //form validation that recalls the page showing with supplied inputs.    
@@ -32,14 +32,16 @@ function f1() {
         'msCognitiveRegion':'uksouth'
 	 //,      'botAvatarUrl':'https://avj-images.s3.eu-west-2.amazonaws.com/AVJ_newlogo_icon.png'
       }
-      autoopen = true;
+      
       window.TeneoWebChat.initialize(element,teneoProps);
 }
 
  window.onload = function () {
     document.getElementById("image3").onclick = function fun() {
         f1();
-	watch_for_chat();
+	const elem = document.getElementById('twc-launchbutton');
+	elem.click();
+	    
     }	 
 	 
     
@@ -165,10 +167,10 @@ function watch_for_chat ()
                 else
                     found = find_node( "//*[@id='twc-launchbutton']", added[i] );
 
-                if( found && autoopen )
+                if( found )
                 {
                     observer.disconnect();
-                   found.click();
+                   //found.click();
                     break;
                 }
            }
