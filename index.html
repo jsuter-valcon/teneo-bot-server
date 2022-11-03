@@ -165,12 +165,10 @@ function watch_for_chat ()
                 else
                     found = find_node( "//*[@id='twc-launchbutton']", added[i] );
 
-                if( found  )
+                if( found && autoopen )
                 {
                     observer.disconnect();
-			if(autoopen) {
-                    		found.click();
-			}
+                   found.click();
                     break;
                 }
            }
