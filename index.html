@@ -7,15 +7,47 @@
 <script>
 
  /*! For license information please see teneo-web-chat.js.LICENSE.txt */
+ var teneoProps;
+ var autoopen=false;
+function f1() {
+    alert("f1 called");
+    //form validation that recalls the page showing with supplied inputs.    
+	teneoProps = {
+        'teneoEngineUrl': 'https://skilledmacaws-83ad8d.bots.teneo.ai/blue_finance_demo_6x8cws2zqb9bq8y6d6pctncddv/',
+	'teneoEngineParams': {
+        demo:'eniro', 
+        botname:'Ava',
+	channel:'eniro',	
+        },
+        'title':'Talk to Ava from AVJ Auto',
+        'autoRedirect':false,
+        'showCloseButton':true,
+        'first_use_asr_system_message':'',
+        'showAsrButton':true,
+        //'ttsActive':true,
+	'showTtsButton':true,
+	'locale':'en-US',
+        'msVoice':'en-US-AIGenerate2Neural',
+        'msCognitiveSubscriptionKey':'e80f77176d1349709e6d237bbe3d476d',
+        'msCognitiveRegion':'uksouth'
+	 //,      'botAvatarUrl':'https://avj-images.s3.eu-west-2.amazonaws.com/AVJ_newlogo_icon.png'
+      }
+      autoopen = true;
+      window.TeneoWebChat.initialize(element,teneoProps);
+}
 
  window.onload = function () {
+    document.getElementById("image3").onclick = function fun() {
+        f1();
+    }	 
+	 
     watch_for_chat();
     if (
       window.TeneoWebChat &&
         typeof window.TeneoWebChat.initialize === 'function'
     ) {
       var element = document.getElementById('teneo-web-chat');
-      const teneoProps = {
+    teneoProps = {
         'teneoEngineUrl': 'https://skilledmacaws-83ad8d.bots.teneo.ai/blue_finance_demo_6x8cws2zqb9bq8y6d6pctncddv/',
 	'teneoEngineParams': {
         demo:'solar', 
@@ -23,21 +55,21 @@
 	channel:'solar',	
         },
         'channel':'valcon',
-        'title':'Talk to Ava from AVJ Solar',
+        'title':'Talk to Ava from AVJ Auto',
         'autoRedirect':false,
         'showCloseButton':true,
         'first_use_asr_system_message':'',
         'showAsrButton':true,
         //'ttsActive':true,
 	'showTtsButton':true,
-	'locale':'en-GB',
-        'msVoice':'en-GB-LibbyNeural',
+	'locale':'en-US',
+        'msVoice':'en-US-AIGenerate2Neural',
         'msCognitiveSubscriptionKey':'e80f77176d1349709e6d237bbe3d476d',
         'msCognitiveRegion':'uksouth'
 	 //,      'botAvatarUrl':'https://avj-images.s3.eu-west-2.amazonaws.com/AVJ_newlogo_icon.png'
       }
       window.TeneoWebChat.initialize(element,teneoProps);
-      
+      watch_for_chat ();
     }
   }
 
@@ -132,10 +164,12 @@ function watch_for_chat ()
                 else
                     found = find_node( "//*[@id='twc-launchbutton']", added[i] );
 
-                if( found )
+                if( found  )
                 {
                     observer.disconnect();
-                    //found.click();
+			if(autoopen) {
+                    		found.click();
+			}
                     break;
                 }
            }
@@ -314,10 +348,16 @@ function watch_for_chat ()
 
 .image2 {
   position: absolute;
-  bottom: 30px;
+  bottom: 60px;
   left: 30px;
   border: 1px solid #000000;
-}	  
+}	
+.image3 {
+  position: absolute;
+  top: 100px;
+  left: 200px;
+  border: 1px solid #000000;
+}
 	  
 </style>
  </head>
@@ -325,8 +365,8 @@ function watch_for_chat ()
 <!-- Teneo Web Chat end -->
     
 <div class="parent">
-<img class="image1" crossOrigin="anonymous" src="https://avj-images.s3.eu-west-2.amazonaws.com/AVJ+solar.png" style="width:100%" /> 
-
+<iframe src="https://lutherkiamn.page1auto.com/kia-dealer/kia-carnival-near-me-cottage-grove-mn/" title="Luther Kia MN" width="100%" height="100%"></iframe>    
+<img class="image3" crossOrigin="anonymous" src="https://avj-images.s3.eu-west-2.amazonaws.com/avjbanner.png" style="width:40%" /> 
 <a href="https://wa.me/14155238886?text=solar%20panel%20finance"><image class="image2" src="https://avj-images.s3.eu-west-2.amazonaws.com/whatsapp.png" alt="WhatsApp AVJ Solar" style="width:80px;height:80px;" /></a>
 	    </div>
 <!-- Teneo Web Chat start -->
