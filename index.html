@@ -39,9 +39,10 @@ function f1() {
  window.onload = function () {
     document.getElementById("image3").onclick = function fun() {
         f1();
+	watch_for_chat();
     }	 
 	 
-    watch_for_chat();
+    
     if (
       window.TeneoWebChat &&
         typeof window.TeneoWebChat.initialize === 'function'
