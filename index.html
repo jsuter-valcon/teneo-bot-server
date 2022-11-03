@@ -7,14 +7,13 @@
 <script>
 
  /*! For license information please see teneo-web-chat.js.LICENSE.txt */
- var teneoProps;
 
 function f1() {
-    alert("f1 called");
       const elem = document.getElementById('twc-launchbutton');
       elem.click();	
     //form validation that recalls the page showing with supplied inputs.    
-	teneoProps = {
+    var element = document.getElementById('teneo-web-chat');	
+    const teneoProps = {
         'teneoEngineUrl': 'https://skilledmacaws-83ad8d.bots.teneo.ai/blue_finance_demo_6x8cws2zqb9bq8y6d6pctncddv/',
 	'teneoEngineParams': {
         demo:'eniro', 
@@ -52,7 +51,7 @@ function f1() {
         typeof window.TeneoWebChat.initialize === 'function'
     ) {
       var element = document.getElementById('teneo-web-chat');
-    teneoProps = {
+      const teneoProps = {
         'teneoEngineUrl': 'https://skilledmacaws-83ad8d.bots.teneo.ai/blue_finance_demo_6x8cws2zqb9bq8y6d6pctncddv/',
 	'teneoEngineParams': {
         demo:'solar', 
