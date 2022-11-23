@@ -17,7 +17,11 @@
       var element = document.getElementById('teneo-web-chat');
       const teneoProps = {
         'teneoEngineUrl': 'https://skilledmacaws-83ad8d.bots.teneo.ai/blue_finance_demo_6x8cws2zqb9bq8y6d6pctncddv/',
-        'channel':'valcon',
+        'teneoEngineParams': {
+        demo:'training', 
+        botname:'Anna',
+	channel:'training',	
+        },
         'title':'Speak with virtual agent Valerie',
         'autoRedirect':false,
         'showCloseButton':true,
