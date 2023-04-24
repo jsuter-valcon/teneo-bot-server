@@ -7,7 +7,7 @@
 <script>
 
  /*! For license information please see teneo-web-chat.js.LICENSE.txt */
-const cookieName = 'previousSessionId';
+const cookieName = 'previousSessionIds';
 	
  window.onload = function () {
     watch_for_chat();
@@ -16,15 +16,16 @@ const cookieName = 'previousSessionId';
         typeof window.TeneoWebChat.initialize === 'function'
     ) {
       var element = document.getElementById('teneo-web-chat');
-      
-      const teneoProps = {
+      var cookieCheck = `${getCookie(cookieName)}`;
+	    
+      var teneoProps = {
         'teneoEngineUrl': 'https://skilledmacaws-83ad8d.bots.teneo.ai/valcon_website_bot_7nktpvvsph8n0sdxe8yxsbzv2h/',
         'channel':'valcon',
 	 'teneoEngineParams': {
         demo:'valcon', 
         channel:'valcon',
         botname:'Valerie',
-        prevSession:`${getCookie(cookieName)}`
+        prevSession:`${cookieCheck}`
         },      
         'title':'Speak with virtual agent Valerie',
         'autoRedirect':false,
@@ -64,11 +65,11 @@ function getCookie(name) {
     var cookieCheck = `${getCookie(cookieName)}`;
     console.log("cookieCheck", cookieCheck);
     if(cookieCheck===undefined || cookieCheck==='undefined') {
-    	document.cookie='previousSessionId=' + sessionId + '; Max-Age=1707109200';
+    	document.cookie='previousSessionIds=' + sessionId + '; Max-Age=1707109200';
     }
     else {
 	if(!cookieCheck.includes(sessionId)) {
-		document.cookie='previousSessionId=' + sessionId + '-'+cookieCheck+'; Max-Age=1707109200';
+		document.cookie='previousSessionIds=' + sessionId + '-'+cookieCheck+'; Max-Age=1707109200';
 	}
     }
 }
