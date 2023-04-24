@@ -8,6 +8,7 @@
 
  /*! For license information please see teneo-web-chat.js.LICENSE.txt */
 
+	
  window.onload = function () {
     watch_for_chat();
     if (
@@ -18,6 +19,12 @@
       const teneoProps = {
         'teneoEngineUrl': 'https://skilledmacaws-83ad8d.bots.teneo.ai/valcon_website_bot_7nktpvvsph8n0sdxe8yxsbzv2h/',
         'channel':'valcon',
+	 'teneoEngineParams': {
+        demo:'valcon', 
+        channel:'valcon',
+        botname:'Valerie',
+        prevSession:getCookie('teneo-web-chat-session-id')
+        },      
         'title':'Speak with virtual agent Valerie',
         'autoRedirect':false,
         'showCloseButton':true,
@@ -34,6 +41,12 @@
     }
   }
 
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+}		
+	
  function onEngineResponse(payload) {
 	// handle engine response event
     var response = payload.responseDetails;
