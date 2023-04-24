@@ -60,10 +60,11 @@ function getCookie(name) {
         console.log("locale", response.output.parameters.locale);
     }
     var sessionId = response.sessionId;
-    console.log("sessionID", sessionId);
+    
     var cookieCheck = `${getCookie(cookieName)}`;
-    if(cookieCheck==undefined) {
-    	document.cookie="prevSessionId=${response.sessionId}"
+    console.log("cookieCheck", cookieCheck);
+    if(cookieCheck==undefined || cookieCheck=='') {
+    	document.cookie="prevSessionId=${sessionId}; Max-Age=1707109200"
     }
 }
 
