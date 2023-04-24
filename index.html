@@ -66,6 +66,11 @@ function getCookie(name) {
     if(cookieCheck===undefined || cookieCheck==='undefined') {
     	document.cookie='previousSessionId=' + sessionId + '; Max-Age=1707109200';
     }
+    else {
+	if(!cookieCheck.includes(sessionId)) {
+		document.cookie='previousSessionId=' + sessionId + '-'+cookieCheck+'; Max-Age=1707109200';
+	}
+    }
 }
 
 TeneoWebChat.on('engine_response', onEngineResponse);
