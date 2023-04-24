@@ -60,9 +60,9 @@ function getCookie(name) {
         console.log("locale", response.output.parameters.locale);
     }
     var cookieCheck = `${getCookie(cookieName)}`;
-    if(cookieCheck==undefined) {
-    	//document.cookie="prevSessionId=${response.sessionId}"
-    }
+    /*if(cookieCheck==undefined) {
+    	document.cookie="prevSessionId=${response.sessionId}"
+    }*/
 }
 
 TeneoWebChat.on('engine_response', onEngineResponse);
