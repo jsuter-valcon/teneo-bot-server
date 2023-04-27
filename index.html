@@ -16,8 +16,8 @@ const cookieName = 'myFirstSessionId';
         typeof window.TeneoWebChat.initialize === 'function'
     ) {
       var element = document.getElementById('teneo-web-chat');
-      var cookieCheck = `${getCookie(cookieName)}`;
-	    
+      var cookieCheck = getCookie(cookieName);
+      console.log("cookieCheck1", cookieCheck);	    
       var teneoProps = {
         'teneoEngineUrl': 'https://skilledmacaws-83ad8d.bots.teneo.ai/valcon_website_bot_7nktpvvsph8n0sdxe8yxsbzv2h/',
         'channel':'valcon',
@@ -45,7 +45,7 @@ const cookieName = 'myFirstSessionId';
 
 function getCookie(name) {
   const value = `; ${document.cookie}`;
-  console.log("cookie values: ", value);	
+  //console.log("cookie values: ", value);	
   const parts = value.split(`; ${name}=`);
   if (parts.length === 2) return parts.pop().split(';').shift();
 }		
