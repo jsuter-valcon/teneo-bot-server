@@ -7,7 +7,7 @@
 <script>
 
  /*! For license information please see teneo-web-chat.js.LICENSE.txt */
-const cookieName = 'previousSessionIds';
+const cookieName = 'myFirstSessionId';
 	
  window.onload = function () {
     watch_for_chat();
@@ -65,13 +65,13 @@ function getCookie(name) {
     var cookieCheck = `${getCookie(cookieName)}`;
     console.log("cookieCheck", cookieCheck);
     if(cookieCheck===undefined || cookieCheck==='undefined') {
-    	document.cookie='previousSessionIds=' + sessionId + '; Max-Age=1707109200';
+    	document.cookie='myFirstSessionId=' + sessionId + '; Max-Age=1707109200';
     }
-    else {
+    /*else {
 	if(!cookieCheck.includes(sessionId)) {
 		document.cookie='previousSessionIds=' + sessionId + '-'+cookieCheck+'; Max-Age=1707109200';
 	}
-    }
+    }*/
 }
 
 TeneoWebChat.on('engine_response', onEngineResponse);
