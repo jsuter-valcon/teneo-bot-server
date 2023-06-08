@@ -198,6 +198,8 @@ if (content.includes("provided by GPT")) {
   --link-button-fg-color-frm: #ffd334 !important;
   --link-button-fg-color-gpt: #ffffff !important;
   --link-button-bg-color-gpt: #70a597 !important;
+  --link-button-fg-color-kb: #ffffff !important;
+  --link-button-bg-color-kb: #183b55 !important;	
 	 
 } 
 .twc-linkbuttonFRM {
@@ -226,13 +228,13 @@ if (content.includes("provided by GPT")) {
 .twc-linkbuttonFRM:hover {  
 	text-decoration: underline;
 }
-.twc-linkbuttonGPT {
-	border: 1px solid #c9c9c9 !important;\
-	border: 1px solid var(--link-button-border-color, #c9c9c9) !important;
+.twc-linkbuttonKB {
+	border: 1px solid #183b55 !important;\
+	border: 1px solid var(--link-button-border-color-kb, #183b55) !important;
 	color: #ffffff !important;
 	color: var(--link-button-fg-color-gpt, #ffffff) !important;
-	background:  #70a597 !important;
-	background: var(--link-button-bg-color-gpt, #70a597) !important;
+	background:  #183b55 !important;
+	background: var(--link-button-bg-color-kb, #183b55) !important;
 	cursor: pointer;
 	font-weight: 400;
 	text-align: center;
