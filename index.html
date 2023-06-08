@@ -190,6 +190,8 @@ function watch_for_chat ()
   --user-typing-indicator-fg-color: #000000 !important;
   --user-typing-indicator-bg-color: #afc7e0 !important;
   --link-button-fg-color-frm: #ffd334 !important;
+  --link-button-fg-color-gpt: #ffffff !important;
+  --link-button-bg-color-gpt: #70a597 !important;
 	 
 } 
 .twc-linkbuttonFRM {
@@ -218,7 +220,32 @@ function watch_for_chat ()
 .twc-linkbuttonFRM:hover {  
 	text-decoration: underline;
 }
-	  
+.twc-linkbuttonGPT {
+	border: 1px solid #c9c9c9 !important;\
+	border: 1px solid var(--link-button-border-color, #c9c9c9) !important;
+	color: #007bff !important;
+	color: var(--link-button-fg-color-gpt, #ffffff) !important;
+	background: #ffffff !important;
+	background: var(--link-button-bg-color-gpt, #70a597) !important;
+	cursor: pointer;
+	font-weight: 400;
+	text-align: center;
+	vertical-align: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	padding: 0.375rem 0.75rem;
+	font-size: 0.9em;
+	line-height: 1.5;
+	border-radius: 0.25rem;
+	display: inline-block;
+	margin: 3px;
+	text-decoration: none;
+}
+.twc-linkbuttonGPT:hover {  
+	text-decoration: underline;
+}	  
 .twc-user-input.twc-active {
   --user-message-bg-color: #afc7e0 !important;
   --user-message-fg-color: #16233e !important;
