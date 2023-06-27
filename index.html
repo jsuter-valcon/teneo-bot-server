@@ -222,7 +222,10 @@ function watch_for_chat ()
 }
 
 .twc-quickreply-message__item.twc-selected { 
-  --quickreply-bg-color:  #eee8d8 !important;    
+  --user-message-fg-color: #0c3c60 !important;  
+  --user-message-bg-color: #eee8d8 !important;
+  background: var(--user-message-fg-color, #565867);
+  color: var(--user-message-bg-color, #565867);
 }
 /*	  
 .twc-card {
