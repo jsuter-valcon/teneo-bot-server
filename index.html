@@ -8,50 +8,14 @@
 
  /*! For license information please see teneo-web-chat.js.LICENSE.txt */
 
-/*function f1() {
-      const elem = document.getElementById('twc-launchbutton');
-      elem.click();	
-    //form validation that recalls the page showing with supplied inputs.    
-    var element = document.getElementById('teneo-web-chat');	
-    const teneoProps = {
-        'teneoEngineUrl': 'https://skilledmacaws-83ad8d.bots.teneo.ai/blue_finance_demo_6x8cws2zqb9bq8y6d6pctncddv/',
-	'teneoEngineParams': {
-        demo:'fdra', 
-        botname:'Frida',
-	channel:'fdra',	
-        },
-        'title':'Praat met Frida van Fudura',
-        'autoRedirect':false,
-        'showCloseButton':true,
-        'first_use_asr_system_message':'',
-        'showAsrButton':true,
-        //'ttsActive':true,
-	'showTtsButton':true,
-	'locale':'nl-NL',
-        'msVoice':'nl-NL-ColetteNeural',
-        'msCognitiveSubscriptionKey':'e80f77176d1349709e6d237bbe3d476d',
-        'msCognitiveRegion':'uksouth'
-	 //,      'botAvatarUrl':'https://avj-images.s3.eu-west-2.amazonaws.com/AVJ_newlogo_icon.png'
-      }
-      
-      window.TeneoWebChat.initialize(element,teneoProps); 
-
-}
-*/ 
  window.onload = function () {
-    /*document.getElementById("image3").onclick = function fun() {
-        f1();
-	
-	    
-    }	*/
-	 
-    
+    watch_for_chat();
     if (
       window.TeneoWebChat &&
         typeof window.TeneoWebChat.initialize === 'function'
     ) {
       var element = document.getElementById('teneo-web-chat');
-      const teneoProps = {
+       const teneoProps = {
         'teneoEngineUrl': 'https://skilledmacaws-83ad8d.bots.teneo.ai/blue_finance_demo_6x8cws2zqb9bq8y6d6pctncddv/',
 	'teneoEngineParams': {
         demo:'fdra', 
@@ -71,8 +35,9 @@
         'msCognitiveRegion':'uksouth'
 	 //,      'botAvatarUrl':'https://avj-images.s3.eu-west-2.amazonaws.com/AVJ_newlogo_icon.png'
       }
+
       window.TeneoWebChat.initialize(element,teneoProps);
-      watch_for_chat ();
+      
     }
   }
 
@@ -170,7 +135,7 @@ function watch_for_chat ()
                 if( found )
                 {
                     observer.disconnect();
-                   //found.click();
+                    //found.click();
                     break;
                 }
            }
@@ -195,41 +160,45 @@ function watch_for_chat ()
  .teneo-web-chat {
   --primary-font: "Open Sans", Arial, sans-serif !important;
   font-family: "Open Sans", Arial, sans-serif !important;
-  font-size: 18px !important;
+  font-size: 18px !important;  
   font: Open Sans Regular,Arial,sans-serif  !important;
-  --quickreply-fg-color: #04296c !important;
-  --quickreply-border-color: #04296c !important;	 
-  --quick-reply-bg-color: #04296c !important;
-  --primary-color: #04296c !important;
+  --quickreply-fg-color: #385920 !important;
+  --quickreply-border-color: #7db43c !important;	 
+  --quick-reply-bg-color: #7db43c !important;
+  --primary-color: #7db43c !important;
   --header-fg-color: #ffffff !important; 
-  --light-bg-color: #04296c !important;
-  --launch-button-bg-color: #04296c !important;
-  --header-bg-color: #00afb2 !important;
-  --bot-message-fg-color: #04296c !important;
-  --card-bg-color: #04296c !important;
-  --form-subtitle-text-color: #00afb2 !important;
-  --dark-fg-color: #04296c !important;
-  --success-color: #a3818a !important;
+  --light-bg-color: #333333 !important;
+  --launch-button-bg-color: #ffffff !important;
+  --launch-button-fg-color: #ffffff !important;
+  --header-bg-color: #7db43c !important;
+  --bot-message-fg-color: #ffffff !important;
+  --card-bg-color: #7db43c !important;
+  --form-subtitle-text-color: #afc7e0 !important;
+  --dark-fg-color: #7db43c !important;
+  --success-color: #385920 !important;
   --danger-color: #ee5743 !important;
   --secondary-color: #333333 !important;
-  --light-fg-color: #00afb2 !important;
+  --light-fg-color: #7db43c !important;
   --user-message-fg-color: #ffffff !important;
-  --user-message-bg-color: #04296c !important;
-  --bot-message-bg-color: #00afb2 !important;  
-  --callout-fg-color: #00afb2 !important;  
-  --sendicon-fg-color: #00afb2 !important;
-  --form-input-background-color: #04296c !important;
-  --quickreply-expired-color: #04296c !important;
+  --user-message-bg-color: #385920 !important;
+  --bot-message-bg-color: #7db43c !important;  
+  --callout-fg-color: #385920 !important;  
+  --sendicon-fg-color: #ffffff !important;
+  --form-input-background-color: #7db43c !important;
+  --quickreply-expired-color: #333333 !important;
   --card-bg-color: #ffffff !important;
-  --text-link-color: #04296c !important;
-  --user-typing-indicator-fg-color: #04296c !important;
-  --user-typing-indicator-bg-color: #00afb2 !important;
+  --text-link-color: #385920 !important;
+  --user-typing-indicator-fg-color: #385920 !important;
+  --user-typing-indicator-bg-color: #7db43c !important;
+  --user-input-fg-color: #ffffff !important; 
+  --ttsicon-fg-color: #ffffff !important;
+  --asricon-fg-color: #ffffff !important;
 	 
 } 
 .twc-user-input.twc-active {
-  --user-message-bg-color: #00afb2 !important;
-  --user-message-fg-color: #eb8c01 !important;
-  --form-input-background-color: #00afb2  !important;
+  --user-message-bg-color: #385920 !important;
+  --user-message-fg-color: #ffffff !important;
+  --form-input-background-color: #385920  !important;
 }	  
 .twc-chat-window {
 	font-family: Verdana, sans-serif;
@@ -349,16 +318,10 @@ function watch_for_chat ()
 
 .image2 {
   position: absolute;
-  bottom: 60px;
+  bottom: 30px;
   left: 30px;
   border: 1px solid #000000;
-}	
-.image3 {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  border: 1px solid #000000;
-}
+}	  
 	  
 </style>
  </head>
@@ -366,11 +329,9 @@ function watch_for_chat ()
 <!-- Teneo Web Chat end -->
     
 <div class="parent">
-<!--iframe src="https://lutherkiamn.page1auto.com/kia-dealer/kia-carnival-near-me-cottage-grove-mn/" title="Luther Kia MN" width="100%" height="100%"></iframe-->  
-<img crossOrigin="anonymous" src="https://avj-images.s3.eu-west-2.amazonaws.com/fdra.png" class="image3"/> 	
-<!--input type="image" src="https://avj-images.s3.eu-west-2.amazonaws.com/avjbanner.png" name="special" class="image3" id="image3" style="width:28%" /-->
+<img class="image1" crossOrigin="anonymous" src="https://avj-images.s3.eu-west-2.amazonaws.com/alldr.png" style="width:100%" /> 
 
-<!--a href="https://wa.me/14155238886?text=get%20a%20quote"><image class="image2" src="https://avj-images.s3.eu-west-2.amazonaws.com/whatsapp.png" alt="WhatsApp Fudura" style="width:80px;height:80px;" /></a-->
+
 	    </div>
 <!-- Teneo Web Chat start -->
 <div id="teneo-web-chat"></div>
