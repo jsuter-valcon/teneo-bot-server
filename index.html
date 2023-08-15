@@ -46,15 +46,15 @@
     var response = payload.responseDetails;
 
     if(response.output.parameters.msVoice && response.output.parameters.msVoice!="") {
-    	window.TeneoWebChat.call('set_ms_voice', response.output.parameters.msVoice );
-    	window.TeneoWebChat.call('set_locale',response.output.parameters.locale );
+    	TeneoWebChat.call('set_ms_voice', response.output.parameters.msVoice );
+    	TeneoWebChat.call('set_locale',response.output.parameters.locale );
         console.log("voice", response.output.parameters.msVoice); 	    
         console.log("locale", response.output.parameters.locale);
     }
     
 }
 
-window.TeneoWebChat.on('engine_response', onEngineResponse);
+TeneoWebChat.on('engine_response', onEngineResponse);
 
  
   window.TENEOCTX || (TENEOCTX = {});
