@@ -21,12 +21,17 @@ const server = http.createServer((req, res) => {
   else if(/^\/[a-zA-Z0-9\/-]*.js$/.test(req.url.toString())){
 	sendFileContent(res, req.url.toString().substring(1), "text/javascript");
   }
-  else if(/^\/[a-zA-Z0-9\/-]*.css$/.test(request.url.toString())){
-	sendFileContent(response, request.url.toString().substring(1), "text/css");
+  else if(/^\/[a-zA-Z0-9\/-]*.css$/.test(req.url.toString())){
+	sendFileContent(res, req.url.toString().substring(1), "text/css");
   }
-  else if(/^\/[a-zA-Z0-9\/-]*.png$/.test(request.url.toString())){
-	sendFileContent(response, request.url.toString().substring(1), "image/text");
+  else if(/^\/[a-zA-Z0-9\/-]*.png$/.test(req.url.toString())){
+	sendFileContent(res, req.url.toString().substring(1), "image/text");
   }
+  else{
+	console.log("Requested URL is: " + request.url);
+	response.end();
+  }
+	
 })
 
 server.listen(process.env.PORT || 3000)var http = require('http');
