@@ -1,21 +1,44 @@
-const http = require('http');
-const express = require('express');
-const fs = require('fs')
-const path = require('path');
+var http = require('http');
+var fs = require("fs");
+const path = require("path");
+const express = require("express");
 const app = express();
-const router = express.Router();
 
-// Tell express to use this router with /api before.
-app.use("/", router);
-app.use("/images", express.static(path.join(__dirname, 'images')));
+http.createServer(function(request, response) {
+	//console.log("Requested URL is: " + request.url.toString());
+	//console.log((/^\//.test(request.url.toString())));
+	if(request.url === "/index"){
+		sendFileContent(response, "index.html", "text/html");
+	}
+	else if(request.url === "/"){
+		response.writeHead(200, {'Content-Type': 'text/html'});
+		response.write('<b>Hey there!</b><br /><br />This is the default response. Requested URL is: ' + request.url);
+	}
+	else if(/^\/[a-zA-Z0-9\/-]*.js$/.test(request.url.toString())){
+		sendFileContent(response, request.url.toString().substring(1), "text/javascript");
+	}
+	else if(/^\/[a-zA-Z0-9\/-]*.css$/.test(request.url.toString())){
+		sendFileContent(response, request.url.toString().substring(1), "text/css");
+	}
+		else if(/^\/[a-zA-Z0-9\/-]*.png$/.test(request.url.toString())){
+		sendFileContent(response, request.url.toString().substring(1), "image/text");
+	}
+	else{
+		console.log("Requested URL is: " + request.url);
+		response.end();
+	}
+}).listen(8080);
 
-//const collectionspage = require(path.resolve('/images', 'collectionspage.jpg'));
-//const twilio_voice_instance = new twilio_voice();
-
-const server = http.createServer((req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.writeHead(200, { 'content-type': 'text/html' })
-  fs.createReadStream('index.html').pipe(res)
-})
-
-server.listen(process.env.PORT || 3000)
+function sendFileContent(response, fileName, contentType){
+	fs.readFile(fileName, function(err, data){
+		if(err){
+			response.writeHead(404);
+			response.write("Not Found!");
+		}
+		else{
+			response.writeHead(200, {'Content-Type': contentType});
+			response.write(data);
+		}
+		response.end();
+	});
+}
