@@ -29,7 +29,7 @@ const server = http.createServer((req, res) => {
   }
   else{
 	console.log("Requested URL is: " + req.url);
-	response.end();
+	res.end();
   }
 	
 })
