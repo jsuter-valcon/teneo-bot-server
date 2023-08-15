@@ -15,7 +15,7 @@ app.use("/images", express.static(path.join(__dirname, 'images')));
 const server = http.createServer((req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.writeHead(200, { 'content-type': 'text/html' })
-  fs.createReadStream('collections_demo.html').pipe(res)
+  fs.createReadStream('index.html').pipe(res)
 })
 
 server.listen(process.env.PORT || 3000)
