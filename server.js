@@ -28,13 +28,13 @@ const server = http.createServer((req, res) => {
 	sendFileContent(res, req.url.toString().substring(1), "image/text");
   }
   else{
-	console.log("Requested URL is: " + request.url);
+	console.log("Requested URL is: " + req.url);
 	response.end();
   }
 	
 })
 
-server.listen(process.env.PORT || 3000)var http = require('http');
+server.listen(process.env.PORT || 3000)
 
 function sendFileContent(response, fileName, contentType){
 	fs.readFile(fileName, function(err, data){
