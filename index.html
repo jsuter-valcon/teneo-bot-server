@@ -15,6 +15,8 @@
         typeof window.TeneoWebChat.initialize === 'function'
     ) {
       var element = document.getElementById('teneo-web-chat');
+      const d = new Date(); // now, or the specific date in question
+      const tz = d.toLocaleString('en', {timeZoneName: 'short'}).split(' ').pop();
        const teneoProps = {
         'teneoEngineUrl': 'https://excitedlynx-85ae29.bots.teneo.ai/briefing_interview_4b6vhmaxg68hrrww0hbgwvnqzb/',
 	'teneoEngineParams': {
@@ -23,7 +25,8 @@
 	channel:'vibe',	
 	locale: 'en-US',
 	langCode: 'en',
-	username: ''
+	username: '',
+	timezone: tz
         },
         'title':'Chat with Vibe',
         'autoRedirect':false,
