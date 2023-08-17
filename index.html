@@ -17,6 +17,8 @@
       var element = document.getElementById('teneo-web-chat');
       const d = new Date(); // now, or the specific date in question
       const tz = d.toLocaleString('en', {timeZoneName: 'short'}).split(' ').pop();
+      console.log("tz: ", tz);
+      
        const teneoProps = {
         'teneoEngineUrl': 'https://excitedlynx-85ae29.bots.teneo.ai/briefing_interview_4b6vhmaxg68hrrww0hbgwvnqzb/',
 	'teneoEngineParams': {
