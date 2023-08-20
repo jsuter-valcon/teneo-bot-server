@@ -7,7 +7,8 @@
 <script>
 
  /*! For license information please see teneo-web-chat.js.LICENSE.txt */
-
+const cookieName = 'myOldestSessID';
+	
  window.onload = function () {
     watch_for_chat();
     if (
@@ -28,7 +29,8 @@
 	locale: 'en-US',
 	langCode: 'en',
 	username: '',
-	timezone: tz
+	timezone: tz,
+	prevSession:`${cookieCheck}`
         },
         'title':'Chat with Vibe',
         'autoRedirect':false,
@@ -49,6 +51,13 @@
     }
   }
 
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  //console.log("cookie values: ", value);	
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+}
+	
   function onEngineResponse(payload) {
 	// handle engine response event
     var response = payload.responseDetails;
@@ -59,7 +68,14 @@
         console.log("voice", response.output.parameters.msVoice); 	    
         console.log("locale", response.output.parameters.locale);
     }
+   var sessionId = response.sessionId;
     
+    var cookieCheck = `${getCookie(cookieName)}`;
+    console.log("cookieCheck", cookieCheck);
+    if(cookieCheck===undefined || cookieCheck==='undefined' || cookieCheck=='undefined') {
+    	document.cookie='myOldestSessID=' + sessionId + '; Max-Age=1707109200';
+	console.log("cookieCreated", sessionId);    
+    } 
 }
 
 TeneoWebChat.on('engine_response', onEngineResponse);
