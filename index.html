@@ -16,6 +16,8 @@ const cookieName = 'myOldestSessID';
         typeof window.TeneoWebChat.initialize === 'function'
     ) {
       var element = document.getElementById('teneo-web-chat');
+      var cookieCheck = getCookie(cookieName);
+      console.log("cookieCheck1", cookieCheck);	  
       const d = new Date(); // now, or the specific date in question
       const tz = d.toLocaleString('en', {timeZoneName: 'short'}).split(' ').pop();
       console.log("tz: ", tz);
