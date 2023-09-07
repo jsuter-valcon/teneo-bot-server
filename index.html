@@ -177,21 +177,59 @@ function watch_for_chat ()
 }
   </script>
   <style>
- .teneo-web-chat {
-  --primary-color: #000000 !important;
-  --light-bg-color: #ee5743 !important;
-  --launch-button-bg-color: #000000 !important;
-  --header-bg-color: #000000 !important;
+  .teneo-web-chat {
+  --primary-font: "Open Sans", Arial, sans-serif !important;
+  font-family: "Open Sans", Arial, sans-serif !important;
+  font-size: 16px !important;
+  font: Open Sans Regular,Arial,sans-serif  !important;
+  --quickreply-fg-color: #045184 !important;
+  --quickreply-border-color: #045184 !important;	 
+  --quick-reply-bg-color: #045184 !important;
+  --primary-color: #045184 !important;
+  --header-fg-color: #ffffff !important; 
+  --light-bg-color: #045184 !important;
+  --launch-button-bg-color: #045184 !important;
+  --header-bg-color: #045184 !important;
   --bot-message-fg-color: #ffffff !important;
-  --card-bg-color: #a3818a !important;
-  --form-subtitle-text-color: #000000 !important;
-  --dark-fg-color: #000000 !important;
+  --card-bg-color: #045184 !important;
+  --form-subtitle-text-color: #ffb81f !important;
+  --dark-fg-color: #045184 !important;
   --success-color: #a3818a !important;
   --danger-color: #ee5743 !important;
-  --secondary-color: #333333 !important;
-  --text-link-color: #E6E6E6 !important;
-  --link-button-bg-color: #000000 !important;
+  --secondary-color: #045184  !important;
+  --light-fg-color: #ffb81f !important;
+  --user-message-fg-color: #ffffff !important;
+  --user-message-bg-color: #045184 !important;
+  --bot-message-bg-color: #ffb81f !important;  
+  --callout-fg-color: #ffb81f !important;  
+  --sendicon-fg-color: #ffb81f !important;
+  --form-input-background-color: #045184 !important;
+  --quickreply-expired-color: #045184 !important;
+  --card-bg-color: #ffffff !important;
+  --text-link-color: #045184 !important;
+  --user-typing-indicator-fg-color: #ffffff !important;
+  --user-typing-indicator-bg-color: #ffb81f !important;
+  --user-input-bg-color: #045184 !important;
+  --user-input-fg-color: #ffffff !important;	 
 } 
+.twc-user-input.twc-active {
+  --user-message-bg-color: #045184 !important;
+  --user-message-fg-color: #ffffff !important;
+  --form-input-background-color: #045184  !important;
+}	  
+.twc-chat-window {
+	font-family: Verdana, sans-serif;
+}
+	  
+.twc-text-message {
+  font-size: 14px !important;	
+  font-family: Arial, sans-serif;
+}
+	 
+.twc-text-message__text {
+  font-size: 14px !important;	
+  font-family: Arial, sans-serif;
+}
 // button drop shadow
 .twc-launch-button:hover {
   box-shadow: 0 0px 27px 1.5px rgba(0, 0, 0, 0.2);
