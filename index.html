@@ -7,8 +7,73 @@
 <script>
 
  /*! For license information please see teneo-web-chat.js.LICENSE.txt */
+function f1() {
+      const elem = document.getElementById('twc-launchbutton');
+      elem.click();	
+    //form validation that recalls the page showing with supplied inputs.    
+    var element = document.getElementById('teneo-web-chat');	
+    const teneoProps = {
+        'teneoEngineUrl': 'https://skilledmacaws-83ad8d.bots.teneo.ai/blue_finance_demo_6x8cws2zqb9bq8y6d6pctncddv/',
+	'teneoEngineParams': {
+        demo:'applyloan', 
+        botname:'Anna',
+	channel:'applyloan',	
+        },
+        'title':'Talk to Anna from AVJ Finance about loans',
+        'autoRedirect':false,
+        'showCloseButton':true,
+        'first_use_asr_system_message':'',
+        'showAsrButton':true,
+        //'ttsActive':true,
+	'showTtsButton':true,
+	'locale':'en-GB',
+        'msVoice':'en-GB-LibbyNeural',
+        'msCognitiveSubscriptionKey':'e80f77176d1349709e6d237bbe3d476d',
+        'msCognitiveRegion':'uksouth'
+	 //,      'botAvatarUrl':'https://avj-images.s3.eu-west-2.amazonaws.com/AVJ_newlogo_icon.png'
+      }
+      
+      window.TeneoWebChat.initialize(element,teneoProps); 
+
+}
+function f2() {
+      const elem = document.getElementById('twc-launchbutton');
+      elem.click();	
+    //form validation that recalls the page showing with supplied inputs.    
+    var element = document.getElementById('teneo-web-chat');	
+    const teneoProps = {
+        'teneoEngineUrl': 'https://skilledmacaws-83ad8d.bots.teneo.ai/blue_finance_demo_6x8cws2zqb9bq8y6d6pctncddv/',
+	'teneoEngineParams': {
+        demo:'reviewdetails', 
+        botname:'Amanda',
+	channel:'reviewdetails',	
+        },
+        'title':'Review your details with Amanda from AVJ Finance',
+        'autoRedirect':false,
+        'showCloseButton':true,
+        'first_use_asr_system_message':'',
+        'showAsrButton':true,
+        //'ttsActive':true,
+	'showTtsButton':true,
+	'locale':'en-GB',
+        'msVoice':'en-GB-LibbyNeural',
+        'msCognitiveSubscriptionKey':'e80f77176d1349709e6d237bbe3d476d',
+        'msCognitiveRegion':'uksouth'
+	 //,      'botAvatarUrl':'https://avj-images.s3.eu-west-2.amazonaws.com/AVJ_newlogo_icon.png'
+      }
+      
+      window.TeneoWebChat.initialize(element,teneoProps); 
+
+}
 
  window.onload = function () {
+
+document.getElementById("applyloan").onclick = function fun() {
+    f1();
+}
+document.getElementById("reviewdetails").onclick = function fun() {
+    f2();
+}
     watch_for_chat();
     if (
       window.TeneoWebChat &&
@@ -34,7 +99,7 @@
         'msVoice':'en-GB-LibbyNeural',
         'msCognitiveSubscriptionKey':'e80f77176d1349709e6d237bbe3d476d',
         'msCognitiveRegion':'uksouth'
-	 //,      'botAvatarUrl':'https://avj-images.s3.eu-west-2.amazonaws.com/AVJ_newlogo_icon.png'
+	 ,'botAvatarUrl':'https://avj-images.s3.eu-west-2.amazonaws.com/AVJ_newlogo_icon.png'
       }
       window.TeneoWebChat.initialize(element,teneoProps);
       
@@ -344,7 +409,7 @@ padding-right: 0px;
 
 <table class="menubar" style="border:0px solid black;margin-left:80px;margin-right:auto;">
 <tr style=" background-color:transparent;height: 80px;color: #ffffff;font-weight: bold;font-size: 24px !important;">
-<b><td>My recent transactions</td><td>My personal details</td><td>Apply for a loan</td></b>
+<b><td>My recent transactions</td><td class="reviewdetails">My personal details</td><td class="applyloan">Apply for a loan</td></b>
 </tr>
 
 
