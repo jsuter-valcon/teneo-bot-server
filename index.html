@@ -68,12 +68,12 @@ function f2() {
 
  window.onload = function () {
 
-document.getElementById("applyloan").onclick = function fun1() {
+/*document.getElementById("applyloan").onclick = function fun1() {
     f1();
 }
 document.getElementById("details").onclick = function fun2() {
     f2();
-}
+}*/
     watch_for_chat();
     if (
       window.TeneoWebChat &&
@@ -407,9 +407,9 @@ padding-right: 0px;
     
 <!--img crossOrigin="anonymous" src="https://avj-images.s3.eu-west-2.amazonaws.com/avjfinance.jpg"/--> 
 
-<img class="transactions" style="position:absolute; top:280;left:80;" src="https://avj-images.s3.eu-west-2.amazonaws.com/button_my-recent-transactions.png" />
-<img class="details" style="position:absolute; top:280;left:300;" src="https://avj-images.s3.eu-west-2.amazonaws.com/button_review-personal-details.png" onclick="f2()" />
-<img class="applyloan" style="position:absolute; top:280;left:520;" src="https://avj-images.s3.eu-west-2.amazonaws.com/button_apply-for-a-loan.png"  onclick="f1()" />
+<input type="img" class="transactions" style="position:absolute; top:280;left:80;" src="https://avj-images.s3.eu-west-2.amazonaws.com/button_my-recent-transactions.png" />
+<input type="img" class="details" style="position:absolute; top:280;left:300;" src="https://avj-images.s3.eu-west-2.amazonaws.com/button_review-personal-details.png" onclick="f2()" />
+<input type="img" class="applyloan" style="position:absolute; top:280;left:520;" src="https://avj-images.s3.eu-west-2.amazonaws.com/button_apply-for-a-loan.png"  onclick="f1()" />
 
 <table class="accounts" style="border:0px solid black;margin-left:90px;margin-right:auto;width:45%">
 <tr style="background-color: transparent;height: 80px;color: #ffffff;font-weight: bold;font-size: 32px !important;margin-left:0px;"><td>My accounts</td><td>        </td> </tr>
