@@ -280,7 +280,8 @@ function watch_for_chat ()
 .twc-quickreply-message.twc-expired .twc-quickreply-message__item.twc-selected { 
   --quickreply-fg-color:  #ffffff !important;    
   --quickreply-bg-color:  #00703c !important;    
- // --quickreply-expired-color:  #00703c !important; 
+  background: 	var(--quickreply-bg-color, #ffffff);
+  color: 	var(--quickreply-fg-color, #00703c);
   font-size: 16px !important;	
 }
 	  
