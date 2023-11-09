@@ -256,11 +256,21 @@ function watch_for_chat ()
 }
 
 
-	*/  
+	 
 	  
-.twc-quickreply-message__item {
+.twc-quickreply-message__item { 
   --user-message-fg-color: #ffffff !important;  
   --user-message-bg-color: #00703c !important;
+  background: 	var(--user-message-bg-color, #00703c);
+  color: 	var(--user-message-bg-color, #00703c);
+  font-size: 16px !important;	
+}
+
+*/
+	  
+.twc-quickreply-message__item { 
+  --quickreply-bg-color: #ffffff !important;  
+  --quickreply-expired-color: #00703c !important;
   background: 	var(--user-message-bg-color, #00703c);
   color: 	var(--user-message-bg-color, #00703c);
   font-size: 16px !important;	
