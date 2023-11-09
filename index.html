@@ -269,10 +269,10 @@ function watch_for_chat ()
 */
 	  
 .twc-quickreply-message__item { 
-  --quickreply-fg-color: #00703c !important;  	
-  --quickreply-bg-color: #ffffff !important;  
+  --quickreply-fg-color: #ffffff !important;  	
+  --quickreply-bg-color: #00703c !important;  
   --quickreply-expired-color: #00703c !important;
-  background: 	var(#ffffff, --quickreply-bg-color);
+  background: 	var(--quickreply-bg-color, #ffffff);
   color: 	var(--quickreply-fg-color, #00703c);
   font-size: 16px !important;	
 }
