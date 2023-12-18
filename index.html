@@ -160,6 +160,12 @@ function watch_for_chat ()
 }
   </script>
   <style>
+
+:root {
+  --darkblue: #2c4c8e;
+  --white: #ffffff;
+}
+	  
  .teneo-web-chat {
   --primary-font: "Open Sans", Arial, sans-serif !important;
   font-family: "Open Sans", Arial, sans-serif !important;
@@ -171,8 +177,8 @@ function watch_for_chat ()
   --quickreply-bg-color: #2c4c8e !important;
   --quickreply-expired-color: #1d70b8 !important;
 	 
-  --primary-color: #ffffff !important;
-  --secondary-color: #ffffff  !important; 
+  --primary-color: var(--white)!important;
+  --secondary-color: var(--white)  !important; 
 	 
   --header-fg-color: #ffffff !important; 
   --header-bg-color: #a3818a !important;
@@ -298,8 +304,8 @@ function watch_for_chat ()
 .twc-quickreply-message.twc-expired .twc-quickreply-message__item.twc-selected { 
   --quickreply-fg-color: #ffffff !important;    
   --quickreply-bg-color: #6b81af !important; 
-/*  --quickreply-border-color:  #6b81af ;
-	--border: #6b81af; 
+  --quickreply-border-color:  #6b81af ;
+/*--border: #6b81af; 
   border:#566FA4; */ 
 
   background: 	var(--quickreply-bg-color, #ffffff);
