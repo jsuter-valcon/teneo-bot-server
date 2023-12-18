@@ -189,14 +189,14 @@ function watch_for_chat ()
   --quickreply-expired-color: var(--expireddarkblue) !important;
 	 
   --primary-color: var(--white) !important;
-  --secondary-color: var(--white) !important;  
+  --secondary-color: var(--white) !important;  /* affects "type question here prompt" */
 	 
   --header-fg-color: var(--white) !important; 
   --header-bg-color: var(--lightred) !important;
 
   --light-fg-color:  var(--lightred)  !important; 
   --light-bg-color: var(--highlightcolor) !important; 
-  --dark-fg-color: var(--black) !important; /* #0b0c0c !important; */
+  --dark-fg-color: var(--black) !important; 
 	 
   --form-input-background-color: var(--lightred)  !important;  
   --form-subtitle-text-color: var(--highlightcolor) !important; /* not used?  */
@@ -208,7 +208,6 @@ function watch_for_chat ()
   --user-message-bg-color: var(--lightblue) !important;
   --bot-message-fg-color: var(--black)  !important;
   --bot-message-bg-color: var(--gray) !important;  
-
 
   --user-typing-indicator-fg-color: var(--white)  !important; 
   --user-typing-indicator-bg-color: var(--lightred) !important;
@@ -228,15 +227,7 @@ function watch_for_chat ()
 
 } 
 
-/*
-.twc-user-input.twc-active {
-  --user-message-bg-color: var(--linkblue) !important;
-  --user-message-fg-color: var(--white) !important;
-}	
-*/
-
-
-	  
+  
 .twc-chat-window {
 	font-family: Verdana, sans-serif;
 }
@@ -250,6 +241,46 @@ function watch_for_chat ()
   font-size: 16px !important;	
   font-family: Arial, sans-serif;
 }
+	  
+
+.twc-quickreply-message__item { 
+  --quickreply-fg-color: var(--white) !important;  	
+  --quickreply-bg-color: var(--darkblue) !important;  
+  --quickreply-expired-color: var(--darkblue) !important; 
+
+
+  background:  var(--quickreply-bg-color, var(--white)); 
+  color:  var(--quickreply-fg-color,  var(--darkblue));  
+
+  font-size: 16px !important;	
+}
+	  
+.twc-quickreply-message.twc-expired .twc-quickreply-message__item.twc-selected { 
+  --quickreply-fg-color: var(--white) !important;    
+  --quickreply-bg-color: var(--expireddarkblue) !important; 
+
+  border: var(--expireddarkblue);
+/* background: 	var(--quickreply-bg-color, var(--white));
+  color: 	var(--quickreply-fg-color, var(--expireddarkblue));  */
+
+  font-size: 16px !important;	
+}
+	  
+.twc-quickreply-message.twc-expired .twc-quickreply-message__item:not(.twc-selected) { 
+  --quickreply-fg-color:  var(--grayedout) !important;    
+  --quickreply-bg-color:  var(--white) !important;    
+  --quickreply-expired-color: var(--grayedout) !important; 
+
+  font-size: 16px !important;	
+}
+
+
+/*
+.twc-user-input.twc-active {
+  --user-message-bg-color: var(--linkblue) !important;
+  --user-message-fg-color: var(--white) !important;
+}	
+*/
 /*	  
 .twc-card {
   background-color: #ffffff !important;
@@ -323,36 +354,6 @@ function watch_for_chat ()
 	  
 */
 	  
-.twc-quickreply-message__item { 
-  --quickreply-fg-color: var(--white) !important;  	
-  --quickreply-bg-color: var(--darkblue) !important;  
-  --quickreply-expired-color: var(--darkblue) !important; 
-
-
-  background:  var(--quickreply-bg-color, var(--white)); 
-  color:  var(--quickreply-fg-color,  var(--darkblue));  
-
-  font-size: 16px !important;	
-}
-	  
-.twc-quickreply-message.twc-expired .twc-quickreply-message__item.twc-selected { 
-  --quickreply-fg-color: var(--white) !important;    
-  --quickreply-bg-color: var(--expireddarkblue) !important; 
-
-  border: var(--expireddarkblue);
-  background: 	var(--quickreply-bg-color, var(--white));
-  color: 	var(--quickreply-fg-color, var(--expireddarkblue)); 
-
-  font-size: 16px !important;	
-}
-	  
-.twc-quickreply-message.twc-expired .twc-quickreply-message__item:not(.twc-selected) { 
-  --quickreply-fg-color:  var(--grayedout) !important;    
-  --quickreply-bg-color:  var(--white) !important;    
-  --quickreply-expired-color: var(--grayedout) !important; 
-
-  font-size: 16px !important;	
-}
 
 
 /*.twc-launch-button .twc-launch-button__open-icon {
