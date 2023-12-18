@@ -184,7 +184,6 @@ function watch_for_chat ()
   font: Open Sans Regular,Arial,sans-serif  !important;
 	 
   --quickreply-fg-color: var(--white) !important;
-  --quickreply-border-color: transparent !important;	*/ 
   --quickreply-bg-color: var(--darkblue) !important;
   --quickreply-expired-color: var(--expireddarkblue) !important;
 	 
@@ -251,6 +250,7 @@ function watch_for_chat ()
 
   background:  var(--quickreply-bg-color, var(--white)); 
   color:  var(--quickreply-fg-color,  var(--darkblue));  
+  border: var(--darkblue);
 
   font-size: 16px !important;	
 }
@@ -275,6 +275,7 @@ function watch_for_chat ()
 
   background: 	var(--white); /* var(--quickreply-bg-color, var(--white)); */
   color: 	var(--grayedout); /*var(--quickreply-fg-color, var(--expireddarkblue));  */
+  border: var(--grayedout);
 
   font-size: 16px !important;	
 }
