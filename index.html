@@ -218,6 +218,7 @@ function watch_for_chat ()
 	 
   --launch-button-bg-color: var(--lightred) !important;
   --launch-button-fg-color: var(--white)  !important; 
+  --launchicon-fg-color: var(--white) !important;
   --callout-fg-color: var(--white)  !important;  
   --sendicon-fg-color: var(--white)  !important; 
 	 
@@ -352,7 +353,11 @@ function watch_for_chat ()
   font-size: 16px !important;	
 }
 
-.twc-launch-button {fg-color: #ffffff !important;}
+
+.twc-launch-button .twc-launch-button__open-icon {
+	{fg-color: #ffffff !important;
+	bg-color: var(--highlightcolor);
+launchicon-fg-color: var(--white);}
 
 .twc-header__title {
   font-weight: bold !important;
