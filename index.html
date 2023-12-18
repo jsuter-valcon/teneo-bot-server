@@ -168,10 +168,12 @@ function watch_for_chat ()
   --lightred: #a3818a;
   --linkblue:  #1d70b8;
   --gray : #cfd2d3;
-  --pink: #d41cbe;
+  --highlightcolor: #d41cbe;
   --darkgreen: #00703c;
   --red: #d4351c;
   --lightblue: #bacae2;
+  --expireddarkblue: #6b81af;
+	
 }
 	  
  .teneo-web-chat {
@@ -311,13 +313,13 @@ function watch_for_chat ()
 	  
 .twc-quickreply-message.twc-expired .twc-quickreply-message__item.twc-selected { 
   --quickreply-fg-color: #ffffff !important;    
-  --quickreply-bg-color: #6b81af !important; 
-  --quickreply-border-color:  #6b81af ;
-  --border: #6b81af; 
-  /* border:#566FA4; */ 
+  --quickreply-bg-color: var(--expireddarkblue)!important; 
+  --quickreply-border-color: var(--expireddarkblue) ;
+  --border: var(--expireddarkblue); 
+   border:#566FA4;  
 
-  background: 	var(--quickreply-bg-color, #ffffff);
-  color: 	var(--quickreply-fg-color, #6b81af);
+  background: 	var(--quickreply-bg-color, var(--white);
+  color: 	var(--quickreply-fg-color, var(--expireddarkblue));
 
 	
   font-size: 16px !important;	
@@ -340,8 +342,8 @@ function watch_for_chat ()
 */
 	  
 .twc-quickreply-message.twc-expired .twc-quickreply-message__item:not(.twc-selected) { 
-  --quickreply-fg-color:  #ffffff !important;    
-  --quickreply-bg-color:  #ffffff !important;    
+  --quickreply-fg-color:  var(--white) !important;    
+  --quickreply-bg-color:  var(--white) !important;    
   --quickreply-expired-color: #c9c9c9 !important;
 
   font-size: 16px !important;	
