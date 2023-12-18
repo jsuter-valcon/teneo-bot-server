@@ -186,7 +186,7 @@ function watch_for_chat ()
   --quickreply-fg-color: var(--white) !important;
   --quickreply-bg-color: var(--darkblue) !important;
   --quickreply-expired-color: var(--expireddarkblue) !important;
-  --quickreply-border-color: var(--darkblue) !important;	
+  --quickreply-border-color: var(--darkblue);	
 	 
   --primary-color: var(--white) !important;
   --secondary-color: var(--white) !important;  /* affects "type question here prompt" */
@@ -244,10 +244,6 @@ function watch_for_chat ()
 	  
 
 .twc-quickreply-message__item { 
-	/*
-  --quickreply-fg-color: var(--white) !important;  	
-  --quickreply-bg-color: var(--darkblue) !important;  
-  --quickreply-expired-color: var(--darkblue) !important;  */
 
   background:  var(--quickreply-bg-color, var(--white)); 
   color:  var(--quickreply-fg-color,  var(--darkblue));  
@@ -255,8 +251,6 @@ function watch_for_chat ()
 }
 	  
 .twc-quickreply-message.twc-expired .twc-quickreply-message__item.twc-selected { 
- /* --quickreply-fg-color: var(--white) !important;    
-  --quickreply-bg-color: var(--expireddarkblue) !important; */
 	
   border: var(--expireddarkblue);
   background: 	var(--expireddarkblue); /* var(--quickreply-bg-color, var(--white)); */
