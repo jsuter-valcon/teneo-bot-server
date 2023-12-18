@@ -167,7 +167,8 @@ function watch_for_chat ()
   --black: #000000;
   --lightred: #a3818a;
   --linkblue:  #1d70b8;
-  --gray : #cfd2d3;
+  --gray: #cfd2d3;
+  --grayedout: #c9c9c9;
   --highlightcolor: #d41cbe;
   --darkgreen: #00703c;
   --red: #d4351c;
@@ -185,7 +186,7 @@ function watch_for_chat ()
   --quickreply-fg-color: var(--white) !important;
   --quickreply-border-color: var(--darkblue) !important;	 
   --quickreply-bg-color: var(--darkblue) !important;
-  --quickreply-expired-color: #1d70b8 !important;
+  --quickreply-expired-color: var(--expireddarkblue) !important;
 	 
   --primary-color: var(--white) !important;
   --secondary-color: var(--white)  !important; 
@@ -194,11 +195,11 @@ function watch_for_chat ()
   --header-bg-color: var(--lightred) !important;
 
   --light-fg-color:  var(--white); /* not used? #a3818a  !important; */
-  --light-bg-color: #b1b4b6 !important;
+  /* --light-bg-color: #b1b4b6 !important; */
   --dark-fg-color: var(--black); /* #0b0c0c !important; */
 	 
   --form-input-background-color: var(--lightred); /* #ffffff !important; */
-  --form-subtitle-text-color: var(--pink); /* not used? #a3818a  !important; */
+  --form-subtitle-text-color: var(--highlightcolor); /* not used? #a3818a  !important; */
 	 
   --success-color: var(--darkgreen) !important;  /* not used */
   --danger-color: var(--red) !important; /* not used */
@@ -301,22 +302,22 @@ function watch_for_chat ()
 */
 	  
 .twc-quickreply-message__item { 
-  --quickreply-fg-color: #ffffff !important;  	
+  --quickreply-fg-color: var(--white) !important;  	
   --quickreply-bg-color: var(--darkblue) !important;  
   --quickreply-expired-color: var(--darkblue) !important; 
 
-  background: 	var(--quickreply-bg-color, #ffffff); 
+  background: 	var(--quickreply-bg-color, var(--white)); 
   color: 	var(--quickreply-fg-color,  var(--darkblue));
 
   font-size: 16px !important;	
 }
 	  
 .twc-quickreply-message.twc-expired .twc-quickreply-message__item.twc-selected { 
-  --quickreply-fg-color: #ffffff !important;    
+  --quickreply-fg-color: var(--white) !important;    
   --quickreply-bg-color: var(--expireddarkblue)!important; 
   --quickreply-border-color: var(--expireddarkblue) ;
   --border: var(--expireddarkblue); 
-   border:#566FA4;  
+   border: var(--expireddarkblue); /* #566FA4; */  
 
   background: 	var(--quickreply-bg-color, var(--white);
   color: 	var(--quickreply-fg-color, var(--expireddarkblue));
@@ -344,7 +345,7 @@ function watch_for_chat ()
 .twc-quickreply-message.twc-expired .twc-quickreply-message__item:not(.twc-selected) { 
   --quickreply-fg-color:  var(--white) !important;    
   --quickreply-bg-color:  var(--white) !important;    
-  --quickreply-expired-color: #c9c9c9 !important;
+  --quickreply-expired-color: var(--grayedout) !important;
 
   font-size: 16px !important;	
 }
