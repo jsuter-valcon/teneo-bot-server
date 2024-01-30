@@ -67,6 +67,10 @@ function getCookie(name) {
     if(cookieCheck===undefined || cookieCheck==='undefined' || cookieCheck=='undefined') {
     	document.cookie='myOldestSessID=' + sessionId + '; Max-Age=1707109200';
 	console.log("cookieCreated", sessionId);    
+    } 
+    if(response.output.parameters.GDPRConsentRevoked && response.output.parameters.GDPRConsentRevoked=='Y') {
+	document.cookie='myOldestSessID=GDPRConsentRevoked; Max-Age=1707109200';
+	console.log("cookieUpdated to revoke: ", cookieCheck); 
     }
     /*else {
 	if(!cookieCheck.includes(sessionId)) {
