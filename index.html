@@ -74,6 +74,7 @@ function getCookie(name) {
     }
 if(response.output.parameters.asyncComplete && response.output.parameters.asyncComplete=='false') {
 var elements = document.getElementsByName('twc-user-input__send-icon-wrapper');
+console.log('elements ' + elements);
 var found = elements[0];
  console.log('found ' + found);
 if(found) setTimeout(function(){
