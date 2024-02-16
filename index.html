@@ -73,13 +73,15 @@ function getCookie(name) {
 	console.log("cookieUpdated to revoke: ", cookieCheck); 
     }
 if(response.output.parameters.asyncComplete && response.output.parameters.asyncComplete=='false') {
-var elements = document.getElementsByClassName('twc-user-input__button');
+var elements = document.getElementsByClassName('twc-user-input__send-icon-wrapper');
 console.log('elements ' + elements);
 var found = elements[0];
- console.log('found ' + found);
+ console.log('found: ' + found);
 if(found) setTimeout(function(){
 	//var found = find_node("//*[@id='twc-chat-window']/div[3]/form/div[3]/button",document);
-	if(document.getElementById("twc-user-input-field").value==""){found.click();}},1500);
+	var value = document.getElementById("twc-user-input-field").value;
+	console.log('value: ' + value);
+	if(value==""){found.click();}},1500);
 }
 	 
     /*else {
