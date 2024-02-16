@@ -77,8 +77,10 @@ var elements = document.getElementsByClassName('twc-user-input__send-icon-wrappe
 console.log('elements ' + elements);
 var found = elements[0];
  console.log('found: ' + found);
-if(found) setTimeout(function(found){
-	//var found = find_node("//*[@id='twc-chat-window']/div[3]/form/div[3]/button",document);
+if(found) setTimeout(function(){
+	var elements = document.getElementsByClassName('twc-user-input__send-icon-wrapper');
+	var found = elements[0];
+ 	console.log('found 2: ' + found);
 	var value = document.getElementById("twc-user-input-field").value;
 	console.log('value: ' + value);
 	if(value==""){found.click();console.log('submitting');}},1500);
