@@ -1,9 +1,8 @@
 <html>
  <head>
   <meta charset="UTF-8">
-<script src="https://www.paypal.com/sdk/js?client-id=HHLRGWD822XLQ"></script>
 <script src="teneo-web-chat.js"></script>
-<script src="customer-sdk.js"></script>
+<script src="customer-sdk.js"></script>  
 <script src="lc-extensions.js"></script>  
 <script>
 
@@ -16,17 +15,49 @@
         typeof window.TeneoWebChat.initialize === 'function'
     ) {
       var element = document.getElementById('teneo-web-chat');
-      const teneoProps = {
-        'teneoEngineUrl': 'https://skilledmacaws-83ad8d.bots.teneo.ai/blue_finance_demo_6x8cws2zqb9bq8y6d6pctncddv/',
-        'channel':'halfords',
-        'title':'Speak with virtual agent Helen from Halfords',
+       const teneoProps = {
+        'teneoEngineUrl': 'https://skilledmacaws-83ad8d.bots.teneo.ai/postcodes_5dsyeadd4h9y69tkg8421fpxeq/',
+	'teneoEngineParams': {
+        demo:'pmo', 
+        botname:'Odin',
+	channel:'pmo',	
+	locale: 'en-GB',
+	langCode: 'en',
+	username: ''
+        },
+        'title':'Chat with Odin',
         'autoRedirect':false,
-        'showCloseButton':true
+        'showCloseButton':true,
+        'first_use_asr_system_message':'',
+        'showAsrButton':true,
+        //'ttsActive':true,
+	'showTtsButton':true,
+	'locale':'en-GB',
+        'msVoice':'en-GB-LibbyNeural',
+        'msCognitiveSubscriptionKey':'e80f77176d1349709e6d237bbe3d476d',
+        'msCognitiveRegion':'uksouth'
+	 //,      'botAvatarUrl':'https://avj-images.s3.eu-west-2.amazonaws.com/AVJ_newlogo_icon.png'
       }
+
       window.TeneoWebChat.initialize(element,teneoProps);
       
     }
   }
+
+  function onEngineResponse(payload) {
+	// handle engine response event
+    var response = payload.responseDetails;
+
+    if(response.output.parameters.msVoice && response.output.parameters.msVoice!="") {
+    	TeneoWebChat.call('set_ms_voice', response.output.parameters.msVoice );
+    	TeneoWebChat.call('set_locale',response.output.parameters.locale );
+        console.log("voice", response.output.parameters.msVoice); 	    
+        console.log("locale", response.output.parameters.locale);
+    }
+    
+}
+
+TeneoWebChat.on('engine_response', onEngineResponse);
 
  
   window.TENEOCTX || (TENEOCTX = {});
@@ -37,7 +68,7 @@
     },
     ctx: {
       eventSource: "leopard-embed",
-      pageTitle: document.title,
+      pageTitle: "PMO Chatbot Odin", //document.title,
       pageUrl: window.location.href,
       pageTopic: "Help",
       message: "This was sent from the customer's web site"
@@ -47,7 +78,7 @@
 <script>
  
 
-const resize_spec = '* 1.5';
+const resize_spec = '* 1.75';
  
 function find_node( path, context )
 {
@@ -79,7 +110,7 @@ function watch_for_chat ()
                     var width;
                     var style = window.getComputedStyle( found );
                     //width = 'calc( ' + style.width + ' ' + resize_spec + ' )';
-                    width='95%';
+                    width='50%';
                     found.style['min-height'] = '95%';
                     found.style.width = width;
                     break;
@@ -107,7 +138,7 @@ function watch_for_chat ()
                 if( found )
                 {
                     observer.disconnect();
-                    found.click();
+                    //found.click();
                     break;
                 }
            }
@@ -129,40 +160,248 @@ function watch_for_chat ()
 }
   </script>
   <style>
+
+:root {
+  --darkblue: #2c4c8e;
+  --white: #ffffff;
+  --black: #000000;
+  --lightred: #a3818a;
+  --linkblue:  #1d70b8;
+  --gray: #cfd2d3;
+  --grayedout: #c9c9c9;
+  --highlightcolor: #d41cbe;
+  --darkgreen: #00703c;
+  --red: #d4351c;
+  --lightblue: #bacae2;
+  --expireddarkblue: #6b81af;
+	
+}
+	  
  .teneo-web-chat {
-  --primary-color: #000000 !important;
-  --light-bg-color: #ff9718 !important;
-  --launch-button-bg-color: #000000 !important;
-  --header-bg-color: #000000 !important;
-  --bot-message-fg-color: #ffffff !important;
-  --card-bg-color: #a3818a !important;
-  --form-subtitle-text-color: #000000 !important;
-  --dark-fg-color: #000000 !important;
-  --success-color: #a3818a !important;
-  --danger-color: #ff9718 !important;
-  --secondary-color: #333333 !important;
+  --primary-font: "Open Sans", Arial, sans-serif !important;
+  font-family: "Open Sans", Arial, sans-serif !important;
+  font-size: 16px !important;
+  font: Open Sans Regular,Arial,sans-serif  !important;
+	 
+  --quickreply-fg-color: var(--white) !important;
+  --quickreply-bg-color: var(--darkblue) !important;
+  --quickreply-expired-color: var(--expireddarkblue) !important;
+  --quickreply-border-color: var(--darkblue) !important;	
+	 
+  --primary-color: var(--white) !important;
+  --secondary-color: var(--white) !important;  /* affects "type question here prompt" */
+	 
+  --header-fg-color: var(--white) !important; 
+  --header-bg-color: var(--lightred) !important;
+
+  --light-fg-color:  var(--lightred)  !important; 
+  --light-bg-color: var(--highlightcolor) !important; 
+  --dark-fg-color: var(--black) !important; 
+	 
+  --form-input-background-color: var(--lightred)  !important;  
+  --form-subtitle-text-color: var(--highlightcolor) !important; /* not used?  */
+	 
+  --success-color: var(--darkgreen) !important;  /* not used */
+  --danger-color: var(--red) !important; /* not used */
+
+  --user-message-fg-color: var(--black) !important;
+  --user-message-bg-color: var(--lightblue) !important;
+  --bot-message-fg-color: var(--black)  !important;
+  --bot-message-bg-color: var(--gray) !important;  
+
+  --user-typing-indicator-fg-color: var(--white)  !important; 
+  --user-typing-indicator-bg-color: var(--lightred) !important;
+	 
+  --user-input-bg-color: var(--lightred) !important;
+  --user-input-fg-color: var(--white)  !important;  
+	 
+  --launch-button-bg-color: var(--lightred) !important;
+  --launch-button-fg-color: var(--white)  !important; 
+  --launchicon-fg-color: var(--white) !important;
+  --callout-fg-color: var(--white)  !important;  
+  --sendicon-fg-color: var(--white)  !important; 
+	 
+  --card-bg-color: var(--white)  !important; 
+  --text-link-color: var(--linkblue) !important;
+	 
+
 } 
-// button drop shadow
-.twc-launch-button:hover {
-  box-shadow: 0 0px 27px 1.5px rgba(0, 0, 0, 0.2);
+
+  
+.twc-chat-window {
+	font-family: Verdana, sans-serif;
+}
+	  
+.twc-text-message {
+  font-size: 16px !important;	
+  font-family: Arial, sans-serif;
+}
+	 
+.twc-text-message__text {
+  font-size: 16px !important;	
+  font-family: Arial, sans-serif;
+}
+	  
+
+.twc-quickreply-message__item { 
+
+  background: var(--quickreply-bg-color, var(--white));  
+  color: var(--quickreply-fg-color,  var(--darkblue));   
+  font-size: 16px !important;	
+}
+	  
+.twc-quickreply-message.twc-expired .twc-quickreply-message__item.twc-selected { 
+
+  background: 	var(--expireddarkblue);
+  color: 	var(--white); 
+	
+  font-size: 16px !important;	
+}
+	  
+.twc-quickreply-message.twc-expired .twc-quickreply-message__item:not(.twc-selected) { 
+
+	
+  --quickreply-fg-color:  var(--grayedout) !important;    
+  --quickreply-bg-color:  var(--white) !important;    
+  --quickreply-expired-color: var(--grayedout) !important; 
+	
+  font-size: 16px !important;	
 }
 
-// increase size of the icon slightly
+
+/*
+.twc-user-input.twc-active {
+  --user-message-bg-color: var(--linkblue) !important;
+  --user-message-fg-color: var(--white) !important;
+}	
+*/
+/*	  
+.twc-card {
+  background-color: #ffffff !important;
+  border: 0px !important;
+  border-top: 0px !important;
+}
+
+.twc-card .twc-buttons, .twc-card .twc-linkbuttons {
+  background-color: #ffffff !important;
+  border: 0px !important;
+  border-top: 0px !important;
+}
+
+.twc-card .twc-btn  {
+	
+  background: var(--user-message-bg-color, #565867);
+  color: var(--user-message-fg-color, #565867);
+  font-size: 18px !important;	
+ 
+}
+.twc-card .twc-buttons .twc-btn:hover  {
+  --user-message-fg-color: #003265 !important;
+  --user-message-bg-color: #fdd42f !important;	
+  color: var(--user-message-bg-color, #565867);
+  background: var(--user-message-fg-color, #565867);
+  font-size: 18px !important;	
+ 
+}	  
+.twc-buttons .twc-btn:hover  {
+  --user-message-fg-color: #003265 !important;
+  --user-message-bg-color: #fdd42f !important;		
+  color: var(--user-message-bg-color, #565867);
+  background: var(--user-message-fg-color, #565867);
+  font-size: 18px !important;	
+ 
+}	 
+	  
+.twc-linkbutton {
+  background: var(--user-message-bg-color, #565867);
+  color: var(--user-message-fg-color, #565867);
+  font-size: 18px !important;	
+}
+
+
+	 
+	  
+.twc-quickreply-message__item { 
+  --user-message-fg-color: #ffffff !important;  
+  --user-message-bg-color: #00703c !important;
+  background: 	var(--user-message-bg-color, #00703c);
+  color: 	var(--user-message-bg-color, #00703c);
+  font-size: 16px !important;	
+}
+
+*/
+	  
+	  
+/*
+	  
+.twc-buttons.twc-expired .twc-btn.twc-selected	 {  
+  --quickreply-bg-color:  #003265 !important;    
+ --quickreply-expired-color:  #003265 !important; 
+  background: var(--user-message-fg-color, #565867);
+  font-size: 16px !important;	
+}
+.twc-buttons.twc-expired .twc-btn:not(.twc-selected) {  
+  --quickreply-expired-color: #c9c9c9 !important;
+  --user-message-bg-color: #eff0f2 !important;
+  font-size: 16px !important;	
+}
+	  
+*/
+	  
+
+
+/*.twc-launch-button .twc-launch-button__open-icon {
+	{fg-color: #ffffff !important;
+	bg-color: var(--highlightcolor);
+launchicon-fg-color: var(--white);}*/
+
+.twc-header__title {
+  font-weight: bold !important;
+  font-size: 16px !important;	
+  font-family: Arial, sans-serif;
+}	  
+	  
+/* button drop shadow */
+.twc-launch-button:hover {
+  box-shadow: 0 0px 27px 1.5px rgba(0, 0, 0, 0.2);
+  fg-color: #ffffff;
+}
+
+/* increase size of the icon slightly */
 .twc-launch-button:hover .twc-launch-button__open-icon {
-  transform: scale(1.1);
+  transform: scale(1.5);
 }   
+.parent {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.image1 {
+  position: relative;
+  top: 0;
+  left: 0;
+  border: 1px solid #000000;
+}
+
+.image2 {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  border: 1px solid #000000;
+}	  
+	  
 </style>
  </head>
     <body>
 <!-- Teneo Web Chat end -->
     
-<!-- <img src="https://i.ibb.co/GQF6wyZ/collectionspage.jpg" width="1800" height="900"/> -->
-<img crossOrigin="anonymous" src="https://avj-images.s3.eu-west-2.amazonaws.com/halfords.png"/> 
-<!-- <iframe src="https://valcon.com/" title="Valcon" width="100%" height="100%"></iframe>  -->  
+<div class="parent">
+<!--img class="image1" crossOrigin="anonymous" src="https://avj-images.s3.eu-west-2.amazonaws.com/cbnt.png" style="width:100%" /--> 
+<iframe src="https://apps.powerapps.com/play/e/default-f854fda6-184f-4f40-a5e2-83a4f8924a15/a/b7d0338e-4e61-43f2-b597-9a80ae185ecc?tenantId=f854fda6-184f-4f40-a5e2-83a4f8924a15&hint=349c1b56-194f-4fc4-bfca-5a7390dd516d&sourcetime=1702363907102&source=portal/" title="Valcon Digital PMO" width="100%" height="100%"></iframe> 
 
+	    </div>
 <!-- Teneo Web Chat start -->
 <div id="teneo-web-chat"></div>
-<!--div id="leopardChatWindow"></div>
-<script src="https://afs-customer-services.herokuapp.com/embed-leopard.js"></script-->
     </body>
 </html>
