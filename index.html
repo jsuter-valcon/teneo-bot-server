@@ -44,6 +44,168 @@
     }
   }
 
+/* File upload */
+/**
+ * A service-specific file uploader.
+ * 
+ * @const
+ */
+const fileUploader = {
+  /**
+   * Uploads file.
+   * 
+   * @param {object} item - the file-containing item as per
+   * the definition of the item in 'upload_panel_submit'
+   * @param {object} callback - a callback object
+   * @param {function} callback.onSucceeded - called if the upload succeeded
+   * @param {function} callback.onFailed - called if the upload failed
+   * @param {function} callback.onUploadPercentageChanged - called when the update percentage
+   * changed, with a number as its argument.
+   */
+  uploadFile(item, callback) {
+    // item.file is uploaded here
+  },
+
+  /**
+   * Deletes the uploaded file.
+   * 
+   * @param {string} itemId - the identifier of the file to delete
+   * @param {object} callback - a callback object
+   * @param {function} callback.onSucceeded - called if the deletion succeeded
+   * @param {function} callback.onFailed - called if the deletion failed
+   */
+  deleteFile(itemId, callback) {
+  },
+
+  /**
+   * Interrupts the file upload.
+   * 
+   * @param {string} itemId - the identifier of the file to delete
+   * @param {object} callback - a callback object
+   * @param {function} callback.onSucceeded - called if the deletion succeeded
+   * @param {function} callback.onFailed - called if the deletion failed
+   */
+  interrupt(itemId) {
+  },
+
+  /**
+   * Interrupts all the ongoing file uploads at once.
+   */
+  interruptAll() {
+  }
+};
+
+
+function doFileUpload(item) {
+
+  // Adding the upload message with for the given file:
+  TeneoWebChat.call('add_message', {
+    type: 'upload',
+    author: 'user',
+    data: {
+      itemId: item.id,
+      fileName: item.file.name,
+      fileSymbol: item.file.name.substring(item.file.name.lastIndexOf('.') + 1),
+      initialUploadState: {
+        status: 'IN_PROGRESS',
+        controlAllowed: true
+      }
+    }
+  });
+
+  // Starting the file upload and setting dynamically the upload state for each file:
+  fileUploader.uploadFile(item, {
+    onSucceeded: () => {
+      TeneoWebChat.call('set_upload_state', {
+          itemId: item.id,
+          uploadState: {
+            status: 'SUCCEEDED'
+          }
+      });
+    },
+    onFailed: () => {
+      TeneoWebChat.call('set_upload_state', {
+          itemId: item.id,
+          uploadState: {
+            status: 'FAILED',
+            uploadPercentage: 0
+          }
+      });
+    },
+    onInterrupted: () => {
+      TeneoWebChat.call('set_upload_state', {
+          itemId: item.id,
+          uploadState: {
+            status: 'INTERRUPTED',
+            uploadPercentage: 0
+          }
+      });
+    },
+    onUploadPercentageChanged: uploadPercentage => {
+      TeneoWebChat.call('set_upload_state', {
+          itemId: item.id,
+          uploadState: {
+            uploadPercentage: uploadPercentage
+          }
+      });
+    }
+  });
+}
+
+
+TeneoWebChat.on('upload_panel_submit', payload => {
+  payload.items.forEach(item => doFileUpload(item));
+});
+
+
+TeneoWebChat.on('upload_panel_cancel', payload => {
+  TeneoWebChat.call('add_message', {
+      type: 'text',
+      author: 'bot',
+      data: { text: 'You have canceled on ' + payload.itemsCount + ' files' }
+  });    
+});
+
+
+TeneoWebChat.on('upload_file_delete_clicked', payload => {
+  fileUploader.deleteFile(payload.itemId, {
+    onSucceeded: () => {
+      TeneoWebChat.call('set_upload_state', {
+        itemId: itemId,
+        uploadState: {
+          status: 'DELETED',
+          uploadPercentage: 0
+        }
+      });
+    },
+    onFailed: () => {
+      console.warn('Deletion failed for itemId', payload.itemId);
+    }
+  });
+});
+
+
+TeneoWebChat.on('upload_file_stop_clicked', payload => {
+  fileUploader.interrupt(payload.itemId);
+});
+
+
+TeneoWebChat.on('upload_file_restart_clicked', payload => {
+    // Get the item by payload.itemId:
+    const item = ... ;
+    doFileUpload(item);
+});
+
+
+TeneoWebChat.on('reset', () => {
+  fileUploader.interruptAll();
+});
+
+
+/* File upload end */
+
+
+
   function onEngineResponse(payload) {
 	// handle engine response event
     var response = payload.responseDetails;
