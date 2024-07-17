@@ -44,6 +44,40 @@
     }
   }
 
+
+  function onEngineResponse(payload) {
+	// handle engine response event
+    var response = payload.responseDetails;
+
+    if(response.output.parameters.msVoice && response.output.parameters.msVoice!="") {
+    	TeneoWebChat.call('set_ms_voice', response.output.parameters.msVoice );
+    	TeneoWebChat.call('set_locale',response.output.parameters.locale );
+        console.log("voice", response.output.parameters.msVoice); 	    
+        console.log("locale", response.output.parameters.locale);
+    }
+    
+}
+
+TeneoWebChat.on('engine_response', onEngineResponse);
+
+ 
+  window.TENEOCTX || (TENEOCTX = {});
+  TENEOCTX = {
+    init: {
+      trustedDomain: "", // something like http://localhost:8080 // "" = receive and post messages to all domains
+      allowScripts: true // false = if you want to disable potential eval
+    },
+    ctx: {
+      eventSource: "leopard-embed",
+      pageTitle: document.title,
+      pageUrl: window.location.href,
+      pageTopic: "Help",
+      message: "This was sent from the customer's web site"
+    }
+  };
+</script>  
+<script>
+
 /* File upload */
 /**
  * A service-specific file uploader.
@@ -203,42 +237,6 @@ TeneoWebChat.on('reset', () => {
 
 
 /* File upload end */
-
-
-
-  function onEngineResponse(payload) {
-	// handle engine response event
-    var response = payload.responseDetails;
-
-    if(response.output.parameters.msVoice && response.output.parameters.msVoice!="") {
-    	TeneoWebChat.call('set_ms_voice', response.output.parameters.msVoice );
-    	TeneoWebChat.call('set_locale',response.output.parameters.locale );
-        console.log("voice", response.output.parameters.msVoice); 	    
-        console.log("locale", response.output.parameters.locale);
-    }
-    
-}
-
-TeneoWebChat.on('engine_response', onEngineResponse);
-
- 
-  window.TENEOCTX || (TENEOCTX = {});
-  TENEOCTX = {
-    init: {
-      trustedDomain: "", // something like http://localhost:8080 // "" = receive and post messages to all domains
-      allowScripts: true // false = if you want to disable potential eval
-    },
-    ctx: {
-      eventSource: "leopard-embed",
-      pageTitle: document.title,
-      pageUrl: window.location.href,
-      pageTopic: "Help",
-      message: "This was sent from the customer's web site"
-    }
-  };
-</script>  
-<script>
- 
 
 const resize_spec = '* 1.75';
  
