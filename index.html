@@ -1,6 +1,54 @@
-<html>
- <head>
-  <meta charset="UTF-8">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Chatbot Website</title>
+
+ <style>
+        /* Simple page styling */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Main container for the chatbot */
+        #chat-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background-color: #ffffff;
+            overflow: hidden;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Style for header or title section */
+        #header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background-color: #1e90ff;
+            color: white;
+            text-align: center;
+            font-size: 1.5em;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="chat-container">
+        <!-- Optional Header -->
+        <div id="header">Welcome to Our Chatbot</div>
+
 <!-- Teneo Web Chat Widget -->
 <div id="teneo-web-widget"
         style="position: absolute; height: 100%; width: 100%; top: 0; z-index: 999; pointer-events: none;"></div>
@@ -24,5 +72,7 @@
         }
     </script>
 <!-- Teneo Web Widget end -->
- </head>
+
+
+</body>
 </html>
